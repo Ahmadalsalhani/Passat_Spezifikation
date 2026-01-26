@@ -4,3 +4,446 @@
 Diese ist eine Projektbeschreibung für ein internes Buchungssystem, die Softwarelösung zur Verwaltung von Kunden, Buchungen und Preisen dient. Es wird ausschließlich vom Personal der Verwaltung genutzt und ist den externen Gästen oder Besuchern nicht zugänglich.
 Ziel des Systems ist es, eine System zu entwickeln,das alle Ressoursen auf Schiff "Passat" verwalten, alle information zentral zu erfassen, übersichtlich darzustellen und Arbeitprozesse im Betrieb zu unterstützen. 
 
+## 2.Systemnutzer und Rollen
+## 2.1 Benutzer(User)
+Die Hauptakteure in diesem System sind die Personal „User“.Sie sind die Mitarbeiter des Schiffs "Passat". 
+Sie haben folgende Rechte und aufgaben.
+- sich in das System einloggen
+- legen neue Kunden an 
+- erstellen Buchungen und Rechnungen. 
+
+## 2.1 Passive Benutzer
+Als passive Akteure sind in dem System die Kunden. Sie bekommen am Ende eine Buchungsbestätigung/ Rechnung, haben aber im aktuellen Szenario keinen direkten Systemzugang.
+
+
+## 2.2 Adminstratoren(Admin)
+Admin haben erwitere rechte zu Systemconfiguration
+
+Rechte und Aufgaben:
+- Anlegen,Änderen und löschen von Benutzerkonto
+- Vollzugriff auf die Systemeinstellung und die Funktionen.
+- pflege von Systemeinstellung
+
+
+
+
+## 3. Pflichtkriterien
+## 1. Buchungen:
+- Kalendermodul(Kunder Übersicht)
+- Aufgabenverteilung
+- Verwalten von Kundendaten
+- Erstellung von Buchungen
+- Üntertstützung bei der Rechnungserstellung/Belegungsprotokolle.
+
+## 2. Objekte
+- Raumplann für das "Passat" zeigen.
+- Räume erstellen oder hinzufügen
+
+## 3. Aktionen
+-  neue Vorgang erstellen
+
+## 4. Systemabgrenzung 
+- manuelleprozesse reduzieren
+- Dupelbuchungen vermeiden
+
+
+## 5. Produkteinsatz / Ziel das System
+Das Buchungsystem dient als Zentralers Verwaltungstool für:
+- Kundendaten
+- Raum- und Belegungsplanung
+- Buchungen
+- Rechnungsstellung 
+- Übersicht alle Ressourcen zeigen
+
+
+## 6. Anwendungsbereich
+Das System ist geeignet für
+- Kleinere Hotels
+- Pensionen
+- Gästehäuser
+- Betriebe mit kleine Rüme und Belegungspläne.
+
+## 7. Zielgruppe
+- Mitarbeitetr der Passat(User)
+- Adminstrationen
+- Managment der zu verwaltende Ressoursen
+
+
+## 8. Produktumgebung
+Das System besteht aus:
+- Serverkomponente zur Datenverarbeitung und Speicherung
+- Clientkomponente (z. B. Weboberfläche) zur Nutzung durch Mitarbeitende
+
+# Spezifikation – Passat Buchungssystem
+
+## Zweck und Ziel des System:
+Das Ziel von dieser System ist ein Buchungssystem zu Unterschtützung das "Passat" Schiff in Travemünder in der Verwaltung von Kunden und Dienstleistungen. Das System soll dabei helfen für Buchungen für Räume festzulegen und Rechnungen zu erstellen.
+
+## Systemabgrenzung(Scope)
+- Kundenverwaltung
+- Raumverwaltung
+- Buchung festlegen
+- Rechnung erstellen
+
+
+# Neuer Vorgang
+
+Der Vorgang in diesem System besteht aus drei Schritten:
+
+- Ein neuen Kunde Anlegen. 
+- Eine Buchung festlegen.
+- Eine Rechnung erstellen
+
+#   Struktur
+1.	Neue Kunden Anlegen.
+2.	Buchung festlegen.
+3.	Rechnung  erstellen.
+
+![Beschreibung des Diagramms]( \C:\Users\ahmad\Desktop\Passat Reengineering\Aktivität_Diagramm.png)
+
+# Neuer Kunde Anlegen:
+Als erstes soll das System den User begrüßen und für den Start zwei Buttons mit den Titeln „Kundenübersicht“ und „Neue Kunde anlegen“ anzeigen.
+Der Button „Kundenübersicht“ soll ermöglichen, den kompletten Kundenbestand in einer Liste anzuzeigen.
+Der Button “Neuer Kunde“ soll ermöglichen einen neuen Kunden im System anzulegen. Nachdem der User das Button “Neuer Kunde“ anklickt, erscheinen Pflichtfelder, die der User ausfüllen muss.
+Allgemeine Pflichtfelder für den neuen Kunden:
+- Vorname
+- Nachname
+- E-Mail
+- Telefonnummer
+- Straße
+- PLZ
+- Ort
+- Land
+
+Zum Schluss erscheint ein Button „Speichern“, dadurch werden die Kundendaten in dem Datenbanksystem gespeichert und in der Kundenliste aufgeführt.
+Nur wenn alle Pflichtfelder vollständig ausgefüllt sind, ist der Button „Speichern“ aktiv anklickbar.  Nach dem Klicken auf „Speichern“ erscheint der Satz “Der Kunde XY wurde erfolgreich angelegt“.
+Wenn ein "Pflichtfeld" nicht ausgefüllt ist und das Button "Speicher" nicht anklickbar ist, soll ein Satz erscheinen"Bitte füllen Sie alle Pflichtfelder aus".    
+
+# Buchung festlegen:
+Der Button „Neuer Vorgang“ ermöglicht dem User folgende Buchungsdaten einzutragen:
+
+- Anlass und Art der Buchung
+- An- und Abreisedatum
+- Check-in und Check-out Uhrzeit
+
+Während der Buchungseingabe soll das System für diese Buchung den Status „Optimierung“ anzeigen.
+Das System soll alle freien Räume an dem eingegebenen Datum zeigen, und ermöglichen diese Räume zu belegen. Die bereits belegten Räume muss das System als beleget anzeigen. 
+Im nächsten Schritt erscheinen unten zwei Buttons: links „Zurück“ und rechts „Weiter zur Kundenauswahl“, die angeklickt werden können.
+Bei „Kundenauswahl“ erscheint die Kundenliste.
+Der User klickt den gewünschten Kunden an, wodurch die Buchung diesem Kunden zugeordnet wird.
+Anschließend erscheint die „Zusammenfassung“ mit allen eingegebenen Daten (Buchung, Kunde, Preis).
+Unten Links ist ein grüner Button „Bestätigen“, wodurch die eingegebenen Daten in einem Dokument im PDF Format erstellt und ausgedruckt werden.
+
+# Rechnung erstellen
+
+Als nächstes erscheint der Button „Neue Rechnung erstellen“. Nach dem Anklicken erscheinen folgende 3 Abschnitte:
+
+- **Abschnitt Brief:** Fälligkeitsdatum und Rechnungsnummer
+- **Abschnitt Adressat:** Kundendaten
+- **Abschnitt Rechnung:** Zusammenfassung aller gebuchten Räume inklusive extra gebuchter Leistungen in eine Gesamtsumme
+
+Abschließend erscheinen 3 Button: “Zurück“, „Drucken“, „Bearbeiten“.
+Mit Button „Zurück“ kommt der User zum Anfang der Buchungen. 
+Mit dem Button „Drucken“ wird eine Rechnung in PDF Format für den Kunden erstellt. Eine Rechnung besteht aus allen gebuchten Posten von der Kunde mit alle Zusätzliche Leistungen, welche er während seines Aufenthalts in Anspruch genommen hat.
+Mit dem Button „Bearbeiten“ hat der User die Möglichkeit die Pflichtfelder vom Kunde zu bearbeiten. Anschließend erscheint der Button speichern, der wird dann angeklickt.
+
+# Kalender Übersicht
+Eine Extra Option in den Menü mit dem Button "Kalender Übersicht" soll erscheint werden. 
+Das Kalender soll das heutige Tag mit dicken Schtift anzeigen.
+Der Kalender soll so aussehen, dass man sieht jeder Buchungensinformation mit der dazugehöriger Kunde und den Raum.
+Das Kalenderübesicht Funktion soll der User erleichtern die Eintragen von den Kunden in den belibigen Räume je nach passenden Datum. 
+Das Kalender soll zeigen alle de aktuelles Kallenderwocher Jahres mit freie und belegte Räume nach Datum und Kunde.
+Die Freie Räume sollen sich von belegten Räume farblich entscheiden. Das belegten Tage im Kalender soll erscheinen mit welchem Kunde und welchen Raum sind sie belegt. Wenn ein tag auf der Kalender mit mehrern Kunden Belegt dann soll jeder Kunde mit anderen Farbe erscheinen. Den Vor- und  Nachname der Kunde soll erkennbar im Kalender erscheinen.
+
+# Kunden und Räume eingeben.
+Um eine einzige Kunde von der Liste eingeben,ohne dass man die ganze Kunden liste zu sehen, soll das System ein Suchfeld mit Autovervollständigen nach  Name und Kundennummer als Alternative.
+
+## Funktionale Anforderung für das interne Buchungsystem:
+
+
+Die nachfolgenden funktionalen Anforderungen beschreiben die verpflichtenden Funktionen des internen Buchungssystems.
+Das System dient als zentrales Werkzeug zur Erfassung, Verwaltung und Organisation von Buchungsdaten.
+Es muss Benutzern ermöglichen, Kundendaten zu erfassen und zu pflegen, Buchungen auf Basis des gewünschten Zeitraums und der aktuellen Raumverfügbarkeit anzulegen sowie automatisch Rechnungen auf Grundlage der erfassten Buchungen zu erstellen.
+
+## FA1 -Kalender und Belegungübersicht
+Das System muss ein Kalenderansicht bereitstellen, in der:
+- belegte Räume
+- freier Räume
+- Buchungszeitraum
+übersichtlich nach farbe dargestellt werden.
+## FA2 - Suchfunktion
+Das System muss Suchfunktionen bereitstellen für:
+- Kunden
+- Buchungen
+- Räume
+Die Suche soll über mehrere Kriterien möglich sein (z. B. Name, Datum, Raumtyp).
+
+## 3.Kundenverwaltung
+## FA1 - Verwaltung von Kundendaten
+Das System muss ermöglichen, dass Personal Kundendaten (Stammdaten) eingeben, speichern und löschen kann.
+Das System muss eine vollständige Liste aller Kunden anzeigen, deren Daten im System gespeichert wurden.
+Personal muss nach Kunden suchen, filtern und einzelne Kundendaten bearbeiten können.
+
+## Raumverwaltung:
+## FA2 -Verwaltung von Räume
+Das System hat ein festen Raumpllan und davon muss Räume verwaltet werden können.
+dazu gehört:
+- Anlegen und Bearbeiten von Räumen
+- Zuordnung zu Raumtypen
+- Aktivieren und Deaktivieren von Räumen
+
+## FA3 -Verwaltung von Raumtypen
+Das System muss untersciedliche Raumtypen ünterstützen(z. B. Einzelzimme, Doppelzimmer, Suite)
+Jeder Raum muss genau ein Raumtyp zugeordnet sein. 
+## FA4 -Buchung von Räumen
+Das System muss es benutzer ermöglichen, Räume für definierten Kunde und Zeitraum zu buchen.
+
+
+## FA7 - Verwalten von Buchung
+
+## Buchungswunsch aufnehmen
+Das System muss ermöglichen, dass das Personal den vom Kunden geäußerten Buchungswunsch erfasst (Datum, Zeitraum, Raum, Zusatzwünsche).
+## Buchung erstellen
+Das System muss dem Personal ermöglichen:
+- eine neue Buchung anzulegen,
+- einen Raum auszuwählen,
+- Datum und Zeitraum einzutragen,
+- die Buchung zu speichern.
+## Buchungsbestätigung erzeugen
+Nach erfolgreicher Buchung muss das System eine Buchungsbestätigung erzeugen, die folgende Informationen enthält:
+- Buchungsnummer
+- Buchungsdatum
+- gebuchter Raum
+
+## Buchung einsehen
+Das System muss dem Personal ermöglichen, alle bestehenden Buchungen anzuzeigen und nach Datum, Zimmer und Kunde zu filtern.
+## Buchung bearbeiten
+Das System muss dem Personal ermöglichen, bestehende Buchungen zu bearbeiten oder zu stornieren.
+
+
+## AF9 - Belegungsprotokoll erstellen
+## Belegungsprotokoll :
+Das System muss ermöglichen, ein Belegungsprotokoll zu erstellen, in dem dokumentiert wird:
+- welche Leistungen der Kunde genutzt hat,
+- an welchen Tagen/wann die Leistungen genutzt wurden.
+## Veranstalterdaten erfassen
+Folgende Daten müssen eingegeben werden:
+Name des Veranstalters oder verantwortlichen Ansprechpartners
+Telefonnummer und/oder E-Mail
+
+## Belegungszeitraum erfassen
+Das System muss die Eingabe ermöglichen von:
+Belegungsbeginn (Datum + Uhrzeit)
+Belegungsende (Datum + Uhrzeit)
+
+## Teilnehmerdaten erfassen
+Das System muss erlauben:
+Teilnehmerliste einzugeben
+Anzahl der Teilnehmer festzulegen
+
+## Übernachtungsangaben eingeben
+Wenn Übernachtungen stattfinden, muss das System ermöglichen:
+Anzahl der Nächte
+optional Anreise- und Abreisedatum
+
+## Schadendokumentation erfassen
+Das System muss erlauben:
+Schadenstatus vor der Belegung
+Schadenstatus nach der Belegung
+Notizen / Dokumentation
+
+## Zusatzkosten anlegen
+Das System muss erlauben, Zusatzkosten wie Gebühren, Servicekosten oder Materialkosten einzutragen.
+
+## Neue Posten anlegen
+Das System muss ermöglichen, eigene Posten (z. B. Reinigung, Raummiete) anzulegen und dem Protokoll hinzuzufügen.
+
+## Neue Kurtaxen anlegen
+Das System muss erlauben, Kurtaxe-Posten anzulegen und dem Protokoll zuzuordnen.
+
+## Zusatzposten verwalten
+Das System muss ermöglichen, zusätzliche Kosten wie:
+- Gebühren,
+- Steuern,
+pro Kunde zu erfassen und dem Belegungsprotokoll hinzuzufügen.
+
+
+## FA8 - Verwalten von Rechnungen
+## Rechnung erstellen:
+Das System muss es aus dem Belegungsprotokoll automatisch eine vollständige Rechnung generieren.
+## Rechnung für einen Kunden anlegen
+Nach Abschluss eines Vorgangs muss das System ermöglichen, eine neue Rechnung für den Kunden anzulegen.
+
+
+## Rechnungsposten erfassen
+Das System muss ermöglichen, einen Rechnungsposten (Bezeichnung/Name) einzugeben.
+
+## Beträge eingeben
+Das System muss ermöglichen:V
+Einzelbetrag einzugeben
+Menge einzugeben
+Gesamtbetrag automatisch zu berechnen: Gesamtbetrag = Einzelbetrag X Menge.
+
+## Rechnung kopieren
+Das System muss erlauben, bestehende Rechnungen zu kopieren.
+
+## Rechnung bearbeiten
+Das System muss erlauben, alle Rechnungsdaten (Posten, Preise, Mengen, Kommentare) zu bearbeiten.
+
+## Rechnung als PDF speichern
+Das System muss ermöglichen, Rechnungen als PDF zu generieren, herunterzuladen oder zu speichern.
+
+## Rechnung abschließen
+Das System muss den Status der Rechnung auf „fertig“ setzen.
+
+## Rechnung mit Kunde und Vorgang verknüpfen
+Jede Rechnung muss eindeutig einem Kunden und einem Vorgang zugeordnet sein.
+
+
+## FA9- Vertragsdokumente erstellen
+Nach Abschluss der Buchung sollen die erforderlichen Vertragsunterlagen automatisch generiert werden.
+Das System muss automatisch alle relevanten Kundendaten in die Dokumentvorlagen einfügen.
+Das System muss folgende Dokumente automatisch im PDF-Format generieren:
+- Buchungsbestätigung
+- Buchungsanerkennung
+- Einwilligung Datenschutz
+- Kabinenbelegungsplan
+Die Dokumente müssen dem Vorgang eindeutig zugeordnet und für den Download sowie Versand verfügbar sein.
+
+## FA10 – Zugriffsbeschränkung
+Das System darf nur vom Personal genutzt werden.
+Externe Personen oder Besucher haben keinen Zugriff.
+
+## FA11 – Prüfung der Datenschutzerklärung
+Das System muss dokumentieren, dass eine unterschriebene Datenschutzerklärung vorliegt, bevor Kundendaten gespeichert werden dürfen.
+
+## Nicht-funktionale Anforderungen für das Buchungssystem „Passat“
+## Einleitung:
+Die folgenden nicht-funktionalen Anforderungen(Qualitätsanforderng) definieren die Qualitätsmerkmale, Leistungsanforderungen, technischen Rahmenbedingungen und betrieblichen Erwartungen an das Buchungssystem. Sie ergänzen die funktionalen Anforderungen und stellen sicher, dass das System zuverlässig, sicher, performant und benutzerfreundlich betrieben werden kann.
+
+
+## Qualitätsatribute :
+## NFA1_ Antwortzeit 
+Das anlegende Funktion von dem neuen Kunder muss innerhalb von < 2 durchgeführt.
+## NFA2_ Durchsatz
+Das system muss (Je nach Ressoucen XY Zahl) Buchungvorgänge bearbeiten werden können 
+## NFA3_ Genauigk/korrektheit 
+Bei dem Preise soll das System soll nach Brutto/ Netto Preise geachtet werden.
+## NFA4_ Speicherbedarf/ Ressourcennutzung:
+Der Anwendungsservice soll bei jeder normaler betriebsystem  -> nicht mehr als 8GB RAM.
+## NFA5_ Echtzeitanforderung
+Die Verfügbarkeit muss innerhalb von 3 Sekunden nach einer Buchung Systemweit aktualisiert werden, um die Überbuchungen zu vermeiden.  
+## NFA6_ Zuverlässigkeit/Fehlerfreiheit: 
+Das System darf nur ein Fehlerrate von 1 Fehler pro 10000 Buchung nicht Überschritten.
+## NFA7_ Sicherheit
+- Der Zugriff auf das System darf ausschließlich authtifizierten Benutzer erlaubt sein.
+- Benutzerrechte müssen nach rollen vergeben werden (Benutzer, Administrator)
+## NFA8_ Ausfallsichrheit/ Fehlertoleranz
+Bei Ausfall eines Anwendungsknotens muss der Betrieb ohne Datenverlust fortgesetzt werden; automatische Wiederherstellung innerhalb von 60 Sekunden.
+## NFA9_ Benutzbarkeit
+Das System muss eine eine übersichtlicher und intuitiv bedienbare Benutzerüberfläche bereitstellen, sodass die Mitarbeitende ohne umfangreiche Schulungen mit dem Ssystem arbeiten können.
+## NFA10_ Zuverlässigkeit
+Das System muss konsistente Daten gewähleisten und darf keine Doppelbuchungen desselben Raumes im gleichen Zeitraum zulassen.
+## NFA_11 Performance
+as System muss Benutzeranfragen, insbesondere Buchungs- und Suchvorgänge, innerhalb von maximale 2 Sekunden verarbeiten.
+## NFA_12 Datenschutz
+Daten von Kunden und Mitarbeitenden müssen gemäß den geltenden Datenschutzbestimmungen gespeichert und verarbeitet.
+
+ 
+
+
+## Anforderungen an das Gesamtsystem(Product requirement):
+## NFA1_Handhabbarkeit, Benutzerfreundlichkeit:
+Das Buchungssystem soll so einfach aufgebaut sein, dass Nutzer schnell mit dem System interagieren können – ohne lange Erklärungen oder Schulungen.
+
+## NFA2_ Wartbarkeit
+Das System muss so gestelten, dasss Erweiterungen und Änderungen an den gesamten System (neue Raumtypen oder Preis Anpassungen) ohne grundlegenden Systemänderunngen möglich werden.
+
+## NFA3_Räumliche Verteilung der Komponenten:
+Das System soll auch dann funktionieren, wenn Nutzer oder Administratoren an verschiedenen Orten sind. 
+Aktionen sollen überall – z. B. im Büro, von zu Hause oder unterwegs – zuverlässig angezeigt und gespeichert werden.
+
+## NFA4_Verfügbare zu verwendende Geräte: 
+Für den Betrieb sollen möglichst Geräte und Infrastrukur benutzt werden. Die Geräte sollen vor dem Verbrauchen geprüft werden und zum System passen,  Die Geräte sollen bezahlbar und energie sparsam sein.
+## NFA5_Schnittstellen zu anderen Teilsystemen:  
+Das Buchungssystem soll Daten mit anderen Systemen austauschen können, Z.B andere Kalender oder andere Zugangsystem , damit Informationen automatisch übertragen werden können.
+
+## Vorgaben für die Durchführung(process requirements):
+- Entwicklungsmeilensteine (Zeitplan, Zwischenprodukte, Prototypen): 
+Für das Projekt soll es einen klaren Zeitplan geben, in dem festgelegt ist, wann ist erste Entwürfe, ein Prototype und die fertige Version des Systems erstellt werden.
+Frage an Daniel: soll ich das richtige Datum und Arbeitschritte schreiben?
+- Projektorganisation und -management: 
+Es soll festgelegt werden, wer für welche Aufgaben zusändig ist, damit jederzeit klar ist, wer entwickelt, testet, und freigibt.
+- Qualitätssicherungsmaßnahmen: 
+Das System soll regelmäßig  nach jeder Realis getstet werden, um sicherzustellen, dass es auf den richtigen zustand ist.
+- Ressourcen (Rechner, Personal, Beschränkungen): 
+an welchen Rechner und welche eigenschaft und werd darf/ nicht an dem System arbeiten.
+- Richtlinien (Vorschriften, Datenschutz, Konventionen): 
+bei der Entwicklung muss man an der Datenschutz regeln eingehalten werden.
+Oder soll ich schreiben die Kunden Daten Dürfen nicht außerhalb das System benutzt werden.
+- Einschränkungen
+(Geheimhaltung, gesetzliche Vorschriften, Copyright)
+- Prioritäten und Änderbarkeit: 
+Manche Funktionen in dem Projekt haben Vorrang Z.B neue Kunden anlegen oder Belegungsprotokoll oder Rechnung erstellen. Erweiterungen öder Änderung sollen nur vorgenommen werden, wenn sie sinnvoll sind.
+- Akzeptanzkriterien für Projektphasen
+Projekt phasen?? Dokumentieren und barbeiten
+Anforderungen für den langfristigen Betrieb des Systems
+- Backend: es wird Python(Django) als Backend Programmierg sprachen Benutz.
+- Für Frontend/ Benutzerüberfläche wird HTML Benutzt.
+- Für Die Nutzung des Kalender wird google Calender API bentzt.
+- Die Datenbank für Nutzer, Kunde, Buchungen wird SQL Benutzt. 
+- Für den Testing und Testcase Erstellen werden wir bei Python Pytest und verwenden.
+- Projektmanagement& Doku Jira und Git vom ISP(Versionierung) benutzt. 
+- Tests, Abnahme, Freigabe, Endprüfung
+
+## Ablauflogik (Workflow):
+
+-	Bestellung annehmen
+-	Kunde anlegen
+-	Neuer Vorgang anlegen.
+-	Buchung für diesen Kunden erstellen.
+-	Dokumente erstellen und an den Kunde schicken. 
+-	Aufenthalt und Belegungsprotokoll erstellen.
+-	Rechnung erstellen und zu der Kunde schicken.
+
+## Strucktur:
+
+Bestellung -> Neuer Kunde (wenn noch nicht da) -> Neuer Vorgang -> Buchung -> Buchungsbestätigung, Einwilligung Datenschutz, Buchungsanerkennung, Belegungsplan -> Aufenthalt -> Belegungsprotokoll -> Rechnung
+
+
+## Use case(Anwendungsfälle):
+
+## UC-1 Kunden anlegen
+Akteur: Benutzer
+Hauptablauf:
+-Benutzer meldet sich an
+-Benutzer klickt auf kunden neue Kunde
+-System zeigt Kunde pflichtfelder 
+-Benutzer soll alle Pflichtfelder mit Kundendaten ausfüllen
+-Buntzer soll auf "Speichern" Klinken
+-System speichert die Kundendaten und zeigt "Kunde wurde gespeichert"
+
+## UC-2 Buchung festlegen
+Akteur: Benutzer
+Hauptablauf:
+Benutzer definiert eine Kunde von den gespeicherten Kunden 
+Benutzer klickt auf neue Rechnung festlegen 
+System zeigt verfügbare Zeitfenster
+Benutzer wählt ein Zeitfenste
+System legt die Buchung an
+System bestätigt die Buchung
+
+Alternativfall:
+Zeitfenster ist nicht verfügbar → Buchung wird abgelehnt
+
+## UC-3 Rechnung erstellen.
+Akteur: Benutzer
+Hauptablauf:
+Benutzer klickt auf Rechnung erstellen
+Benutzer gibt den Kundenname an
+Benutzer gibt die Anzahl der Nächte an
+System berechnet der Preis und zeigt es an
+Benutzer klickt auf "Rechnung in PDF Form erstellen"
+System erstellt die Rechnug in PDF und zeigt das an.
+
+
