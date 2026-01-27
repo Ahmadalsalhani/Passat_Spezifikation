@@ -142,21 +142,21 @@ Als nächstes erscheint der Button „Neue Rechnung erstellen“. Nach dem Ankli
 - **Abschnitt Adressat:** Kundendaten
 - **Abschnitt Rechnung:** Zusammenfassung aller gebuchten Räume inklusive extra gebuchter Leistungen in eine Gesamtsumme
 
-Abschließend erscheinen 3 Button: “Zurück“, „Drucken“, „Bearbeiten“.
-Mit Button „Zurück“ kommt der User zum Anfang der Buchungen. 
-Mit dem Button „Drucken“ wird eine Rechnung in PDF Format für den Kunden erstellt. Eine Rechnung besteht aus allen gebuchten Posten von der Kunde mit alle Zusätzliche Leistungen, welche er während seines Aufenthalts in Anspruch genommen hat.
-Mit dem Button „Bearbeiten“ hat der User die Möglichkeit die Pflichtfelder vom Kunde zu bearbeiten. Anschließend erscheint der Button speichern, der wird dann angeklickt.
+Am Ende werden drei Buttons angezeigt: „Zurück“, „Drucken“ und „Bearbeiten“.
+
+Mit „Zurück“ gelangt der Nutzer zur Übersicht der Buchungen.
+Der Button „Drucken“ erstellt eine PDF-Rechnung für den Kunden, die alle gebuchten Posten sowie zusätzliche Leistungen während des Aufenthalts enthält.
+Über „Bearbeiten“ können die Pflichtfelder der Kundendaten geändert werden. Danach erscheint der Button „Speichern“, um die Änderungen zu übernehmen.
 
 # Kalender Übersicht
-Eine Extra Option in den Menü mit dem Button "Kalender Übersicht" soll erscheint werden. 
-Das Kalender soll das heutige Tag mit dicken Schtift anzeigen.
-Der Kalender soll so aussehen, dass man sieht jeder Buchungensinformation mit der dazugehöriger Kunde und den Raum.
-Das Kalenderübesicht Funktion soll der User erleichtern die Eintragen von den Kunden in den belibigen Räume je nach passenden Datum. 
-Das Kalender soll zeigen alle de aktuelles Kallenderwocher Jahres mit freie und belegte Räume nach Datum und Kunde.
-Die Freie Räume sollen sich von belegten Räume farblich entscheiden. Das belegten Tage im Kalender soll erscheinen mit welchem Kunde und welchen Raum sind sie belegt. Wenn ein tag auf der Kalender mit mehrern Kunden Belegt dann soll jeder Kunde mit anderen Farbe erscheinen. Den Vor- und  Nachname der Kunde soll erkennbar im Kalender erscheinen.
+Im Menü soll eine zusätzliche Option „Kalenderübersicht“ erscheinen.
+Der Kalender hebt den aktuellen Tag deutlich hervor und zeigt übersichtlich alle Buchungen mit Kunde und Raum an.
+
+Die Kalenderübersicht erleichtert dem Nutzer das Eintragen von Kunden in passende Räume anhand des Datums. Angezeigt wird die aktuelle Kalenderwoche mit freien und belegten Räumen.
+Freie und belegte Tage sind farblich unterscheidbar. Belegte Tage zeigen Kundenname und Raum an. Sind an einem Tag mehrere Kunden gebucht, werden diese in unterschiedlichen Farben dargestellt. Vor- und Nachname des Kunden sind im Kalender sichtbar.
 
 # Kunden und Räume eingeben.
-Um eine einzige Kunde von der Liste eingeben,ohne dass man die ganze Kunden liste zu sehen, soll das System ein Suchfeld mit Autovervollständigen nach  Name und Kundennummer als Alternative.
+Für die Eingabe von Kunden und Räumen steht ein Suchfeld mit Autovervollständigung zur Verfügung, sodass einzelne Kunden nach Name oder Kundennummer ausgewählt werden können, ohne die komplette Kundenliste anzeigen zu müssen.
 
 ## Funktionale Anforderung für das interne Buchungsystem:
 
@@ -221,7 +221,7 @@ Das System muss dem Personal ermöglichen, alle bestehenden Buchungen anzuzeigen
 Das System muss dem Personal ermöglichen, bestehende Buchungen zu bearbeiten oder zu stornieren.
 
 
-## AF9 - Belegungsprotokoll erstellen
+## FA9 - Belegungsprotokoll erstellen
 ## Belegungsprotokoll :
 Das System muss ermöglichen, ein Belegungsprotokoll zu erstellen, in dem dokumentiert wird:
 - welche Leistungen der Kunde genutzt hat,
@@ -260,12 +260,6 @@ Das System muss ermöglichen, eigene Posten (z. B. Reinigung, Raummiete) anzuleg
 
 ## Neue Kurtaxen anlegen
 Das System muss erlauben, Kurtaxe-Posten anzulegen und dem Protokoll zuzuordnen.
-
-## Zusatzposten verwalten
-Das System muss ermöglichen, zusätzliche Kosten wie:
-- Gebühren,
-- Steuern,
-pro Kunde zu erfassen und dem Belegungsprotokoll hinzuzufügen.
 
 
 ## FA8 - Verwalten von Rechnungen
@@ -316,54 +310,3 @@ Externe Personen oder Besucher haben keinen Zugriff.
 
 ## FA11 – Prüfung der Datenschutzerklärung
 Das System muss dokumentieren, dass eine unterschriebene Datenschutzerklärung vorliegt, bevor Kundendaten gespeichert werden dürfen.
-
-## Nicht-funktionale Anforderungen für das Buchungssystem „Passat“
-## Einleitung:
-Die folgenden nicht-funktionalen Anforderungen(Qualitätsanforderng) definieren die Qualitätsmerkmale, Leistungsanforderungen, technischen Rahmenbedingungen und betrieblichen Erwartungen an das Buchungssystem. Sie ergänzen die funktionalen Anforderungen und stellen sicher, dass das System zuverlässig, sicher, performant und benutzerfreundlich betrieben werden kann.
-
-
-## Qualitätsatribute :
-## NFA1_ Antwortzeit 
-Das anlegende Funktion von dem neuen Kunder muss innerhalb von < 2 durchgeführt.
-## NFA2_ Durchsatz
-Das system muss (Je nach Ressoucen XY Zahl) Buchungvorgänge bearbeiten werden können 
-## NFA3_ Genauigk/korrektheit 
-Bei dem Preise soll das System soll nach Brutto/ Netto Preise geachtet werden.
-## NFA4_ Speicherbedarf/ Ressourcennutzung:
-Der Anwendungsservice soll bei jeder normaler betriebsystem  -> nicht mehr als 8GB RAM.
-## NFA5_ Echtzeitanforderung
-Die Verfügbarkeit muss innerhalb von 3 Sekunden nach einer Buchung Systemweit aktualisiert werden, um die Überbuchungen zu vermeiden.  
-## NFA6_ Zuverlässigkeit/Fehlerfreiheit: 
-Das System darf nur ein Fehlerrate von 1 Fehler pro 10000 Buchung nicht Überschritten.
-## NFA7_ Sicherheit
-- Der Zugriff auf das System darf ausschließlich authtifizierten Benutzer erlaubt sein.
-- Benutzerrechte müssen nach rollen vergeben werden (Benutzer, Administrator)
-## NFA8_ Ausfallsichrheit/ Fehlertoleranz
-Bei Ausfall eines Anwendungsknotens muss der Betrieb ohne Datenverlust fortgesetzt werden; automatische Wiederherstellung innerhalb von 60 Sekunden.
-## NFA9_ Benutzbarkeit
-Das System muss eine eine übersichtlicher und intuitiv bedienbare Benutzerüberfläche bereitstellen, sodass die Mitarbeitende ohne umfangreiche Schulungen mit dem Ssystem arbeiten können.
-## NFA10_ Zuverlässigkeit
-Das System muss konsistente Daten gewähleisten und darf keine Doppelbuchungen desselben Raumes im gleichen Zeitraum zulassen.
-## NFA_11 Performance
-as System muss Benutzeranfragen, insbesondere Buchungs- und Suchvorgänge, innerhalb von maximale 2 Sekunden verarbeiten.
-## NFA_12 Datenschutz
-Daten von Kunden und Mitarbeitenden müssen gemäß den geltenden Datenschutzbestimmungen gespeichert und verarbeitet.
-
- 
-
-
-## Anforderungen an das Gesamtsystem(Product requirement):
-## NFA1_Handhabbarkeit, Benutzerfreundlichkeit:
-Das Buchungssystem soll so einfach aufgebaut sein, dass Nutzer schnell mit dem System interagieren können – ohne lange Erklärungen oder Schulungen.
-
-## NFA2_ Wartbarkeit
-Das System muss so gestelten, dasss Erweiterungen und Änderungen an den gesamten System (neue Raumtypen oder Preis Anpassungen) ohne grundlegenden Systemänderunngen möglich werden.
-
-## NFA3_Räumliche Verteilung der Komponenten:
-Das System soll auch dann funktionieren, wenn Nutzer oder Administratoren an verschiedenen Orten sind. 
-Aktionen sollen überall – z. B. im Büro, von zu Hause oder unterwegs – zuverlässig angezeigt und gespeichert werden.
-
-## NFA4_Verfügbare zu verwendende Geräte: 
-Für den Betrieb sollen möglichst Geräte und Infrastrukur benutzt werden. Die Geräte sollen vor dem Verbrauchen geprüft werden und zum System passen,  Die Geräte sollen bezahlbar und energie sparsam sein.
-## NFA5_Schnittstellen zu anderen Teilsystemen:  
-Das Buchungssystem soll Daten mit anderen Systemen austauschen können, Z.B andere Kalender oder andere Zugangsystem , damit Informationen automatisch übertragen werden können.
