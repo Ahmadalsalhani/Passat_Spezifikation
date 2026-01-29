@@ -1,0 +1,146 @@
+{% extends 'buchungen/base.html' %}
+
+{% block title %}{{ title }} - Passat Buchungssystem{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col">
+        <h1><i class="bi bi-calendar-plus"></i> {{ title }}</h1>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            
+            <h5 class="mb-3">Kundendaten</h5>
+            <div class="mb-3">
+                <label for="{{ form.kunde.id_for_label }}" class="form-label">Kunde *</label>
+                {{ form.kunde }}
+                {% if form.kunde.errors %}
+                    <div class="text-danger">{{ form.kunde.errors }}</div>
+                {% endif %}
+            </div>
+            
+            <hr class="my-4">
+            
+            <h5 class="mb-3">Buchungsdaten</h5>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="{{ form.anreise_datum.id_for_label }}" class="form-label">Anreise Datum *</label>
+                    {{ form.anreise_datum }}
+                    {% if form.anreise_datum.errors %}
+                        <div class="text-danger">{{ form.anreise_datum.errors }}</div>
+                    {% endif %}
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <label for="{{ form.abreise_datum.id_for_label }}" class="form-label">Abreise Datum *</label>
+                    {{ form.abreise_datum }}
+                    {% if form.abreise_datum.errors %}
+                        <div class="text-danger">{{ form.abreise_datum.errors }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="{{ form.checkin_zeit.id_for_label }}" class="form-label">Check-in Zeit *</label>
+                    {{ form.checkin_zeit }}
+                    {% if form.checkin_zeit.errors %}
+                        <div class="text-danger">{{ form.checkin_zeit.errors }}</div>
+                    {% endif %}
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <label for="{{ form.checkout_zeit.id_for_label }}" class="form-label">Check-out Zeit *</label>
+                    {{ form.checkout_zeit }}
+                    {% if form.checkout_zeit.errors %}
+                        <div class="text-danger">{{ form.checkout_zeit.errors }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="{{ form.raum.id_for_label }}" class="form-label">Raum *</label>
+                {{ form.raum }}
+                {% if form.raum.errors %}
+                    <div class="text-danger">{{ form.raum.errors }}</div>
+                {% endif %}
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="{{ form.anlass.id_for_label }}" class="form-label">Anlass *</label>
+                    {{ form.anlass }}
+                    {% if form.anlass.errors %}
+                        <div class="text-danger">{{ form.anlass.errors }}</div>
+                    {% endif %}
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <label for="{{ form.art_der_buchung.id_for_label }}" class="form-label">Art der Buchung *</label>
+                    {{ form.art_der_buchung }}
+                    {% if form.art_der_buchung.errors %}
+                        <div class="text-danger">{{ form.art_der_buchung.errors }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="{{ form.status.id_for_label }}" class="form-label">Status *</label>
+                    {{ form.status }}
+                    {% if form.status.errors %}
+                        <div class="text-danger">{{ form.status.errors }}</div>
+                    {% endif %}
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <label for="{{ form.anzahl_teilnehmer.id_for_label }}" class="form-label">Anzahl Teilnehmer</label>
+                    {{ form.anzahl_teilnehmer }}
+                    {% if form.anzahl_teilnehmer.errors %}
+                        <div class="text-danger">{{ form.anzahl_teilnehmer.errors }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <h5 class="mb-3">Veranstalter (Optional)</h5>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="{{ form.veranstalter_name.id_for_label }}" class="form-label">Veranstalter Name</label>
+                    {{ form.veranstalter_name }}
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <label for="{{ form.veranstalter_kontakt.id_for_label }}" class="form-label">Veranstalter Kontakt</label>
+                    {{ form.veranstalter_kontakt }}
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="{{ form.notizen.id_for_label }}" class="form-label">Notizen</label>
+                {{ form.notizen }}
+            </div>
+            
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+            
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-success">
+                    <i class="bi bi-save"></i> Speichern
+                </button>
+                <a href="{% url 'buchung_liste' %}" class="btn btn-secondary">
+                    <i class="bi bi-x-circle"></i> Abbrechen
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

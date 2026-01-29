@@ -1,0 +1,155 @@
+{% extends 'buchungen/base.html' %}
+
+{% block title %}Buchungsdetails - Passat Buchungssystem{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h1><i class="bi bi-calendar-check"></i> Buchungsdetails</h1>
+    </div>
+    <div class="col-md-4 text-end">
+        <a href="{% url 'buchung_bearbeiten' buchung.pk %}" class="btn btn-warning">
+            <i class="bi bi-pencil"></i> Bearbeiten
+        </a>
+        <a href="{% url 'rechnung_erstellen' buchung.pk %}" class="btn btn-success">
+            <i class="bi bi-receipt"></i> Rechnung erstellen
+        </a>
+        <a href="{% url 'buchung_liste' %}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Zurück
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Buchungsinformationen</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-borderless">
+                    <tr>
+                        <th>Buchungsnummer:</th>
+                        <td>{{ buchung.buchungsnummer }}</td>
+                    </tr>
+                    <tr>
+                        <th>Status:</th>
+                        <td>
+                            {% if buchung.status == 'bestaetigt' %}
+                            <span class="badge bg-success">{{ buchung.get_status_display }}</span>
+                            {% elif buchung.status == 'optimierung' %}
+                            <span class="badge bg-warning">{{ buchung.get_status_display }}</span>
+                            {% else %}
+                            <span class="badge bg-danger">{{ buchung.get_status_display }}</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Kunde:</th>
+                        <td><a href="{% url 'kunde_detail' buchung.kunde.pk %}">{{ buchung.kunde }}</a></td>
+                    </tr>
+                    <tr>
+                        <th>Raum:</th>
+                        <td>{{ buchung.raum }}</td>
+                    </tr>
+                    <tr>
+                        <th>Anreise:</th>
+                        <td>{{ buchung.anreise_datum|date:"d.m.Y" }} um {{ buchung.checkin_zeit|time:"H:i" }} Uhr</td>
+                    </tr>
+                    <tr>
+                        <th>Abreise:</th>
+                        <td>{{ buchung.abreise_datum|date:"d.m.Y" }} um {{ buchung.checkout_zeit|time:"H:i" }} Uhr</td>
+                    </tr>
+                    <tr>
+                        <th>Anzahl Nächte:</th>
+                        <td>{{ buchung.anzahl_naechte }}</td>
+                    </tr>
+                    <tr>
+                        <th>Anlass:</th>
+                        <td>{{ buchung.anlass }}</td>
+                    </tr>
+                    <tr>
+                        <th>Art der Buchung:</th>
+                        <td>{{ buchung.art_der_buchung }}</td>
+                    </tr>
+                    <tr>
+                        <th>Teilnehmer:</th>
+                        <td>{{ buchung.anzahl_teilnehmer }}</td>
+                    </tr>
+                    {% if buchung.veranstalter_name %}
+                    <tr>
+                        <th>Veranstalter:</th>
+                        <td>{{ buchung.veranstalter_name }} ({{ buchung.veranstalter_kontakt }})</td>
+                    </tr>
+                    {% endif %}
+                    <tr>
+                        <th>Erstellt von:</th>
+                        <td>{{ buchung.erstellt_von }}</td>
+                    </tr>
+                    <tr>
+                        <th>Erstellt am:</th>
+                        <td>{{ buchung.erstellt_am|date:"d.m.Y H:i" }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0">Preisübersicht</h5>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <tr>
+                        <td>Raum ({{ buchung.anzahl_naechte }} Nächte)</td>
+                        <td class="text-end">{{ buchung.raum.raumtyp.preis_pro_nacht }} € x {{ buchung.anzahl_naechte }}</td>
+                    </tr>
+                    {% for protokoll in belegungsprotokolle %}
+                    <tr>
+                        <td>{{ protokoll.leistung }} ({{ protokoll.anzahl }}x)</td>
+                        <td class="text-end">{{ protokoll.gesamtbetrag }} €</td>
+                    </tr>
+                    {% endfor %}
+                    <tr class="table-active">
+                        <th>Gesamtpreis:</th>
+                        <th class="text-end">{{ gesamtpreis }} €</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0">Rechnungen</h5>
+            </div>
+            <div class="card-body">
+                {% if rechnungen %}
+                <div class="list-group">
+                    {% for rechnung in rechnungen %}
+                    <a href="{% url 'rechnung_detail' rechnung.pk %}" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">{{ rechnung.rechnungsnummer }}</h6>
+                            <small>
+                                <span class="badge bg-{{ rechnung.status|yesno:'success,warning,info' }}">
+                                    {{ rechnung.get_status_display }}
+                                </span>
+                            </small>
+                        </div>
+                        <p class="mb-1">{{ rechnung.gesamtbetrag }} €</p>
+                        <small>Fällig: {{ rechnung.faelligkeitsdatum|date:"d.m.Y" }}</small>
+                    </a>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-muted">Keine Rechnungen vorhanden.</p>
+                <a href="{% url 'rechnung_erstellen' buchung.pk %}" class="btn btn-success">
+                    <i class="bi bi-receipt"></i> Rechnung erstellen
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

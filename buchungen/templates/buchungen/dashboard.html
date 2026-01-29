@@ -1,0 +1,103 @@
+{% extends 'buchungen/base.html' %}
+
+{% block title %}Dashboard - Passat Buchungssystem{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col">
+        <h1>Willkommen im Passat Buchungssystem</h1>
+        <p class="text-muted">Verwaltung von Kunden, Buchungen und Rechnungen für das Schiff Passat in Travemünde</p>
+    </div>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-md-3">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h3 class="card-title">{{ total_kunden }}</h3>
+                <p class="card-text">Kunden gesamt</p>
+                <i class="bi bi-people fs-1"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h3 class="card-title">{{ total_buchungen }}</h3>
+                <p class="card-text">Buchungen gesamt</p>
+                <i class="bi bi-calendar-check fs-1"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <h3 class="card-title">{{ aktuelle_buchungen }}</h3>
+                <p class="card-text">Aktuelle Buchungen</p>
+                <i class="bi bi-clock fs-1"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-warning text-dark">
+            <div class="card-body">
+                <h3 class="card-title">{{ verfuegbare_raeume }}</h3>
+                <p class="card-text">Verfügbare Räume</p>
+                <i class="bi bi-door-open fs-1"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="bi bi-person-plus"></i> Neuer Kunde</h5>
+            </div>
+            <div class="card-body">
+                <p>Legen Sie einen neuen Kunden im System an.</p>
+                <a href="{% url 'kunde_anlegen' %}" class="btn btn-primary">
+                    <i class="bi bi-plus-circle"></i> Neuer Kunde anlegen
+                </a>
+                <a href="{% url 'kunde_liste' %}" class="btn btn-outline-primary">
+                    <i class="bi bi-list"></i> Kundenübersicht
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0"><i class="bi bi-calendar-plus"></i> Neuer Vorgang</h5>
+            </div>
+            <div class="card-body">
+                <p>Erstellen Sie eine neue Buchung für einen Kunden.</p>
+                <a href="{% url 'buchung_erstellen' %}" class="btn btn-success">
+                    <i class="bi bi-plus-circle"></i> Neue Buchung erstellen
+                </a>
+                <a href="{% url 'buchung_liste' %}" class="btn btn-outline-success">
+                    <i class="bi bi-list"></i> Buchungsübersicht
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4 mt-2">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0"><i class="bi bi-calendar3"></i> Kalenderübersicht</h5>
+            </div>
+            <div class="card-body">
+                <p>Zeigen Sie alle Buchungen in einer Kalenderansicht an.</p>
+                <a href="{% url 'kalender_uebersicht' %}" class="btn btn-info text-white">
+                    <i class="bi bi-calendar3"></i> Zum Kalender
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

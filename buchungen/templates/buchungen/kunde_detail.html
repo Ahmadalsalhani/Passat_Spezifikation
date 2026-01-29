@@ -1,0 +1,99 @@
+{% extends 'buchungen/base.html' %}
+
+{% block title %}Kundendetails - Passat Buchungssystem{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h1><i class="bi bi-person"></i> Kundendetails</h1>
+    </div>
+    <div class="col-md-4 text-end">
+        <a href="{% url 'kunde_bearbeiten' kunde.pk %}" class="btn btn-warning">
+            <i class="bi bi-pencil"></i> Bearbeiten
+        </a>
+        <a href="{% url 'kunde_liste' %}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Zurück
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Kundendaten</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-borderless">
+                    <tr>
+                        <th>Name:</th>
+                        <td>{{ kunde.vorname }} {{ kunde.nachname }}</td>
+                    </tr>
+                    <tr>
+                        <th>E-Mail:</th>
+                        <td>{{ kunde.email }}</td>
+                    </tr>
+                    <tr>
+                        <th>Telefon:</th>
+                        <td>{{ kunde.telefonnummer }}</td>
+                    </tr>
+                    <tr>
+                        <th>Adresse:</th>
+                        <td>
+                            {{ kunde.strasse }}<br>
+                            {{ kunde.plz }} {{ kunde.ort }}<br>
+                            {{ kunde.land }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Datenschutz:</th>
+                        <td>
+                            {% if kunde.datenschutz_akzeptiert %}
+                            <span class="badge bg-success">Akzeptiert</span>
+                            {% else %}
+                            <span class="badge bg-danger">Nicht akzeptiert</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Erstellt am:</th>
+                        <td>{{ kunde.erstellt_am|date:"d.m.Y H:i" }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0">Buchungen</h5>
+            </div>
+            <div class="card-body">
+                {% if buchungen %}
+                <div class="list-group">
+                    {% for buchung in buchungen %}
+                    <a href="{% url 'buchung_detail' buchung.pk %}" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">{{ buchung.buchungsnummer }}</h6>
+                            <small>
+                                <span class="badge bg-{{ buchung.status|yesno:'success,warning,danger' }}">
+                                    {{ buchung.get_status_display }}
+                                </span>
+                            </small>
+                        </div>
+                        <p class="mb-1">
+                            {{ buchung.raum }} - {{ buchung.anreise_datum|date:"d.m.Y" }} bis {{ buchung.abreise_datum|date:"d.m.Y" }}
+                        </p>
+                        <small>{{ buchung.anlass }}</small>
+                    </a>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-muted">Keine Buchungen vorhanden.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

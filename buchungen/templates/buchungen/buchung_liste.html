@@ -1,0 +1,70 @@
+{% extends 'buchungen/base.html' %}
+
+{% block title %}Buchungsübersicht - Passat Buchungssystem{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h1><i class="bi bi-calendar-check"></i> Buchungsübersicht</h1>
+    </div>
+    <div class="col-md-4 text-end">
+        <a href="{% url 'buchung_erstellen' %}" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Neue Buchung
+        </a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        {% if buchungen %}
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Buchungsnummer</th>
+                        <th>Kunde</th>
+                        <th>Raum</th>
+                        <th>Anreise</th>
+                        <th>Abreise</th>
+                        <th>Status</th>
+                        <th>Aktionen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for buchung in buchungen %}
+                    <tr>
+                        <td>{{ buchung.buchungsnummer }}</td>
+                        <td>{{ buchung.kunde }}</td>
+                        <td>{{ buchung.raum }}</td>
+                        <td>{{ buchung.anreise_datum|date:"d.m.Y" }}</td>
+                        <td>{{ buchung.abreise_datum|date:"d.m.Y" }}</td>
+                        <td>
+                            {% if buchung.status == 'bestaetigt' %}
+                            <span class="badge bg-success">{{ buchung.get_status_display }}</span>
+                            {% elif buchung.status == 'optimierung' %}
+                            <span class="badge bg-warning">{{ buchung.get_status_display }}</span>
+                            {% else %}
+                            <span class="badge bg-danger">{{ buchung.get_status_display }}</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'buchung_detail' buchung.pk %}" class="btn btn-sm btn-info" title="Details">
+                                <i class="bi bi-eye"></i>
+                            </a>
+                            <a href="{% url 'buchung_bearbeiten' buchung.pk %}" class="btn btn-sm btn-warning" title="Bearbeiten">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle"></i> Keine Buchungen vorhanden.
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
